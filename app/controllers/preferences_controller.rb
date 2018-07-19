@@ -1,0 +1,4 @@
+class PreferencesController < ApplicationController
+
+
+end
