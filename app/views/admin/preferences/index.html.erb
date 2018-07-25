@@ -1,6 +1,6 @@
 <h1>Preferences</h1>
 
-<%= form_for @preference do |f| %>
+<%= form_for @preference, url: admin_preference_path(@preference) do |f| %>
   <div>
   <%= f.label :artist_sort_order %>
   ASC: <%= f.radio_button :artist_sort_order, "ASC" %>
@@ -11,13 +11,17 @@
   ASC: <%= f.radio_button :song_sort_order, "ASC" %>
   DESC: <%= f.radio_button :song_sort_order, "DESC" %>
   </div>
+  <div>
+    <br>
   <%= f.label :allow_create_artist %>
   Allow: <%= f.radio_button :allow_create_artists, true %>
   Deny: <%= f.radio_button :allow_create_artists, false %>
   </div>
+  <div>
   <%= f.label :allow_create_song %>
   Allow: <%= f.radio_button :allow_create_songs, true %>
   Deny: <%= f.radio_button :allow_create_songs, false %>
   </div>
+  <br />
   <%= f.submit %>
 <% end %>

@@ -5,7 +5,7 @@ class Admin::PreferencesController < ApplicationController
   end
 
   def update
-    @preference.find(params[:id])
+    @preference = Preference.find(params[:id])
     @preference.update(preference_params)
     redirect_to admin_preferences_path
   end
@@ -13,7 +13,7 @@ class Admin::PreferencesController < ApplicationController
   private
 
   def preference_params
-    params.require(:preference).permit(:artist_sort_order, :song_sort_order, :allow_create_artist, :allow_create_song)
+    params.require(:preference).permit(:artist_sort_order, :song_sort_order, :allow_create_artists, :allow_create_songs)
   end
 
 end
