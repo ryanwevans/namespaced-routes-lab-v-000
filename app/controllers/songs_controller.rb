@@ -6,12 +6,13 @@ class SongsController < ApplicationController
       @artist = Artist.find_by(id: params[:artist_id])
       if @artist.nil?
         redirect_to artists_path, alert: "Artist not found"
-      else
-        # @songs below isn't returning an instance of Song class, so causing error 
-        if @preference
-          @songs = @artist.songs.order(title: @preference.song_sort_order)
-        end
+      elsif @preference
+        @songs = @artist.songs.order(title: @preference.song_sort_order)
+      else @preference
+        @songs = @artist.songs
       end
+    elsif @preference
+      @songs = Song.order(title: @preference.song_sort_order)
     else
       @songs = Song.all
     end
